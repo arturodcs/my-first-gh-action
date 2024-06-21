@@ -1,0 +1,11 @@
+name: Multi Line Shell Command
+on: workflow_dispatch
+jobs:
+  print-greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print multi-line greeting
+        run: |
+          echo "Hello World"
+          echo "This is a multi-line shell command"
+          echo "Done - bye!"
