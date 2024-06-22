@@ -1,11 +1,23 @@
 # This workflow is created for the purpose of testing and experimenting with GitHub Actions.
 # It is not intended for any real use within the project. 
 
-name: Test Workflows
-on: workflow_dispatch
+name: Test Project
+on: push
 jobs:
-  test_workflow:
-    runs-on: self-hosted
+  test:
+    runs-on: ubunu-latest
     steps:
-      - name: Print GitHub Workspace
-        run: echo $GITHUB_WORKSPACE/
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+    
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+    
